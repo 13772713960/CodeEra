@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>撸码时代</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            list-style: none;
+            border: 0;
+        }
+
+        body {
+            background: url("img/beijing.png") no-repeat;
+            /*position: fixed;*/
+        }
+        .gps {
+            width: 290px;
+            height: 530px;
+            float: left;
+            position: absolute;
+            left: 538px;
+            top: 20px;
+            background: url("img/jingkuang1.png");
+            z-index: 10;
+        }
+
+        .all {
+            width: 1000px;
+            height: 621px;
+            margin: auto;
+            position: relative;
+        }
+
+        .screen {
+            width: 290px;
+            height: 530px;
+            background: url("img/jingkuang1.png");
+            margin: auto;
+            top: 20px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .screen ul {
+            position: absolute;
+            width: 1740px;
+        }
+
+        .screen li {
+            float: left;
+            position: relative
+        }
+
+        .screen ol {
+            position: absolute;
+            left: 109px;
+            bottom: -20px;
+            line-height: 100px;
+            text-align: center;
+            float: left;
+        }
+
+        .screen ol li {
+            float: left;
+            width: 10px;
+            height: 10px;
+            background: #000;
+            border-radius: 50%;
+            border: 1px solid #000;
+            cursor: pointer;
+        }
+
+        .screen ol li.current {
+            background: #fff;
+        }
+
+        #arr {
+            display: none;
+        }
+
+        #arr span {
+            width: 90px;
+            height: 90px;
+            background: url("img/spans.png");
+            cursor: pointer;
+            position: absolute;
+            top: 40%;
+            left: 230px;
+        }
+
+        #arr #right {
+            right: 230px;
+            left: auto;
+        }
+    </style>
+</head>
+<body>
+<div class="lumashidai"><a href=""></a></div>
+<div class="gps"></div>
+<div class="all" id="box">
+    <div class="screen">
+        <ul>
+            <li><img src="img/jing1.png" alt=""></li>
+            <li><img src="img/jing2.png" alt=""></li>
+            <li><img src="img/jing3.png" alt=""></li>
+            <li><img src="img/jing4.png" alt=""></li>
+            <li><img src="img/jing5.png" alt=""></li>
+        </ul>
+        <ol></ol>
+    </div>
+    <div id="arr"><span id="left"></span><span id="right"></span></div>
+</div>
+<script>
+    var timer = null;
+    var box = document.getElementById("box");
+    var screen = box.children[0];
+    var ul = screen.children[0];
+    var ol = screen.children[1];
+    var ulLis = ul.children;
+    var imgWidth = screen.offsetWidth;
+    var arr = document.getElementById("arr");
+    var left = document.getElementById("left");
+    var right = document.getElementById("right");
+
+    for (var i = 0; i < ulLis.length; i++) {
+        var li = document.createElement("li");
+        li.innerHTML = i + 1;
+        ol.appendChild(li);
+    }
+    var olLis = ol.children;
+    olLis[0].className = "current";
+    var firstImg = ulLis[0].cloneNode(true);
+    ul.appendChild(firstImg);
+    for (var j = 0; j < olLis.length; j++) {
+        olLis[j].index = j;
+        olLis[j].onmouseover = function () {
+            for (var k = 0; k < olLis.length; k++) {
+                olLis[k].className = "";
+            }
+            this.className = "current";
+            var target = -this.index * imgWidth;
+            animate(ul, target);
+            pic = this.index;
+            square = this.index;
+        };
+    }
+    box.onmouseover = function () {
+        arr.style.display = "block";
+        clearInterval(timer);
+    };
+    box.onmouseout = function () {
+        arr.style.display = "none";
+        timer = setInterval(right.onclick, 1000);
+    };
+    var pic = 0;
+    var square = 0;
+    right.onclick = function () {
+        if (pic === ulLis.length - 1) {
+            ul.style.left = 0 + "px";
+            pic = 0;
+        }
+        pic++;
+        var target = -pic * imgWidth;
+        animate(ul, target);
+        if (square < olLis.length - 1) {
+            square++;
+        } else {
+            square = 0;
+        }
+        for (var i = 0; i < olLis.length; i++) {
+            olLis[i].className = "";
+        }
+        olLis[square].className = "current";
+    };
+    left.onclick = function () {
+        if (pic === 0) {
+            ul.style.left = -(ulLis.length - 1) * imgWidth + "px";
+            pic = ulLis.length - 1;
+        }
+        pic--;
+        var target = -pic * imgWidth;
+        animate(ul, target);
+        if (square > 0) {
+            square--;
+        } else {
+            square = olLis.length - 1;
+        }
+        for (var i = 0; i < olLis.length; i++) {
+            olLis[i].className = "";
+        }
+        olLis[square].className = "current";
+    };
+    timer = setInterval(right.onclick, 1200);
+
+    //函数包
+    function animate(obj, target) {
+        clearInterval(obj.timer);
+        obj.timer = setInterval(function () {
+            var leader = obj.offsetLeft;
+            var step = 30;
+            step = leader < target ? step : -step;//step有了正负
+            if (Math.abs(leader - target) >= Math.abs(step)) {
+                leader = leader + step;
+                obj.style.left = leader + "px";
+            } else {
+                obj.style.left = target + "px";//手动放到终点
+                clearInterval(obj.timer);
+            }
+        }, 15);
+    }
+</script>
+</body>
+</html>

@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>撸码时代</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            list-style: none;
+            border: 0;
+        }
+
+        body {
+            background: url("img/6.jpg");
+        }
+        .all {
+            width: 538px;
+            height: 298px;
+            border: 1px solid #ccc;
+            margin: 100px auto;
+            background: url("img/01.png");
+            position: relative;
+        }
+
+        .screen {
+            width: 516px;
+            height: 276px;
+            border: 1px solid #ccc;
+            margin: 10px auto;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .screen ul {
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 3120px;
+        }
+
+        .screen li {
+            width: 518px;
+            height: 278px;
+            float: left;
+        }
+
+        .all ol {
+            position: absolute;
+            right: 10px;
+            bottom: 10px;
+            line-height: 20px;
+            text-align: center;
+        }
+
+        .all ol li {
+            float: left;
+            width: 20px;
+            height: 20px;
+            background: #fff;
+            border: 1px solid #ccc;
+            margin-left: 10px;
+            cursor: pointer;
+
+        }
+
+        .all ol li.current {
+            background: yellow;
+        }
+
+        #arr {
+            display: none;
+        }
+
+        #arr span {
+            width: 40px;
+            height: 40px;
+            position: absolute;
+            left: 12px;
+            top: 50%;
+            margin-top: -20px;
+            background: #000;
+            cursor: pointer;
+            line-height: 40px;
+            text-align: center;
+            font-weight: bold;
+            font-family: "黑体";
+            font-size: 30px;
+            color: #fff;
+            opacity: 0.3;
+            border: 1px solid #fff;
+        }
+
+        #arr #right {
+            right: 12px;
+            left: auto;
+        }
+    </style>
+</head>
+<body>
+<div class="beijing">
+    <div class="all" id="box">
+        <div class="screen">
+            <ul>
+                <li><img src="img/1.jpg" alt=""></li>
+                <li><img src="img/2.jpg" alt=""></li>
+                <li><img src="img/3.jpg" alt=""></li>
+                <li><img src="img/4.jpg" alt=""></li>
+                <li><img src="img/5.jpg" alt=""></li>
+            </ul>
+            <ol></ol>
+        </div>
+        <div id="arr"><span id="left">&lt;</span><span id="right">&gt;</span></div>
+    </div>
+</div>
+<script>
+    //开撸之前 先把人凑齐 来来电话拿起来 快点把兄弟们都叫来
+    var timer = null;
+    var box = document.getElementById("box");
+    var screen = box.children[0];
+    var ul = screen.children[0];
+    var ol = screen.children[1];
+    var ulLis = ul.children;
+    var imgWidth = screen.offsetWidth;
+    var arr = document.getElementById("arr");
+    var left = document.getElementById("left");
+    var right = document.getElementById("right");
+    //人员集合完毕 开撸 等等撸之前 一人先干一瓶三两三
+    for (var i = 0; i < ulLis.length; i++) {
+        var li = document.createElement("li");//技能无中生有
+        li.innerHTML = i + 1;
+        ol.appendChild(li);
+    }
+    var olLis = ol.children;
+    olLis[0].className = "current";
+    var firstImg = ulLis[0].cloneNode(true);
+    ul.appendChild(firstImg);
+    for (var j = 0; j < olLis.length; j++) {
+        olLis[j].index = j;
+        olLis[j].onmouseover = function () {
+            for (var k = 0; k < olLis.length; k++) {
+                olLis[k].className = "";
+            }
+            this.className = "current";
+            var target = -this.index * imgWidth;
+            animate(ul, target);
+            pic = this.index;
+            square = this.index;
+        };
+    }
+    box.onmouseover = function () {
+        arr.style.display = "block";
+        clearInterval(timer);
+    };
+    box.onmouseout = function () {
+        arr.style.display = "none";
+        timer = setInterval(right.onclick, 1000);
+    };
+    var pic = 0;
+    var square = 0;
+    right.onclick = function () {
+        if (pic === ulLis.length - 1) {
+            ul.style.left = 0 + "px";
+            pic = 0;
+        }
+        pic++;
+        var target = -pic * imgWidth;
+        animate(ul, target);
+        if (square < olLis.length - 1) {
+            square++;
+        } else {
+            square = 0;
+        }
+        for (var i = 0; i < olLis.length; i++) {
+            olLis[i].className = "";
+        }
+        olLis[square].className = "current";
+    };
+    left.onclick = function () {
+        if (pic === 0) {
+            ul.style.left = -(ulLis.length - 1) * imgWidth + "px";
+            pic = ulLis.length - 1;
+        }
+        pic--;
+        var target = -pic * imgWidth;
+        animate(ul, target);
+        if (square > 0) {
+            square--;
+        } else {
+            square = olLis.length - 1;
+        }
+        for (var i = 0; i < olLis.length; i++) {
+            olLis[i].className = "";
+        }
+        olLis[square].className = "current";
+    };
+    timer = setInterval(right.onclick, 1200);
+
+    //函数包
+    function animate(obj, target) {
+        clearInterval(obj.timer);
+        obj.timer = setInterval(function () {
+            var leader = obj.offsetLeft;
+            var step = 15;
+            step = leader < target ? step : -step;//step有了正负
+            if (Math.abs(leader - target) >= Math.abs(step)) {
+                leader = leader + step;
+                obj.style.left = leader + "px";
+            } else {
+                obj.style.left = target + "px";//手动放到终点
+                clearInterval(obj.timer);
+            }
+        }, 15);
+    }
+</script>
+</body>
+</html>

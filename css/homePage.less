@@ -1,0 +1,118 @@
+body {
+  background: #E7E1D1 url(../images/bg.jpg);
+  background-attachment: fixed;
+}
+
+.plr {
+  margin: 0 25px;
+}
+
+/*导航*/
+header {
+  width: 100%;
+  height: 40px;
+  background: rgba(231, 225, 209, 0.8);
+  border-bottom: 1px solid #6F5560;
+  .w1100 {
+    width: 1100px;
+    margin: 0 auto;
+    ul {
+      h1 {
+        font-size: 16px;
+        color: #6D505A;
+        line-height: 40px;
+        float: left;
+        img {
+          width: 31px;
+          margin-right: 5px;
+          vertical-align: middle;
+        }
+      }
+      li {
+        font-size: 14px;
+        color: #6F5560;
+        padding: 0 20px;
+        line-height: 40px;
+        float: left;
+
+      }
+    }
+  }
+}
+
+/*个人作品*/
+main {
+  .skill {
+    width: 100%;
+    height: 140px;
+    background: rgba(211, 52, 77, 0.8);
+    ul {
+      width: 1100px;
+      margin: 0 auto;
+      padding: 20px 0;
+      li {
+        width: 100px;
+        height: 100px;
+        margin: 0 85px;
+        font-weight: 900;
+        text-align: center;
+        line-height: 100px;
+        color: #6F5560;
+        background: #E7E1D1;
+        border-radius: 50%;
+        float: left;
+      }
+    }
+  }
+  .personalWorks {
+    width: 100%;
+    height: 90px;
+    text-align: center;
+    color: #E7E1D1;
+    background: #6F5560;
+    h2 {
+      padding: 12px 0;
+    }
+    p {
+    }
+  }
+  .worksShow {
+    width: 1100px;
+    margin: 0 auto;
+    li {
+      width: 350px;
+      height: 156px;
+      background: #6D505A;
+      margin-top: 10px;
+      border: 1px solid #6D505A;
+      display: block;
+      float: left;
+      position: relative;
+      overflow: hidden;
+      a {
+        img {
+          width: 100%;
+          vertical-align: middle;
+        }
+        p {
+          width: 100%;
+          height: 30px;
+          text-align: center;
+          line-height: 30px;
+          color: #6D505A;
+          background: rgba(231, 225, 209, 0.8);
+          position: absolute;
+          bottom: 0;
+          display: none;
+        }
+      }
+      a:hover {
+        p {
+          display: block;
+        }
+      }
+    }
+  }
+}
+
+/*动画*/

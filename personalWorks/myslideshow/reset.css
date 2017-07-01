@@ -1,0 +1,65 @@
+/*将来所有的CSS的样式我们都要放在CSS文件中*/
+/* CSS初始化 START*/
+/*清楚标签的margin和padding*/
+html, body, h1, h2, h3, h4, h5, h6, div, p, dl, dt, dd, ol, ul, li, form, table, th, td, a, img, span, strong, var, em, input, textarea, select, option {
+    margin: 0;
+    padding: 0;
+}
+/*给页面设置一个统一的字体大小和颜色，还要设置body的背景颜色*/
+body {
+    font-family: "microsoft yahei", Arail, Tabhoma;
+    font-size: 12px;
+    color: grey;
+    background-color: #f2f2f2;
+}
+/*清除li便签之前的小点*/
+ul, ol {
+    list-style: none;
+}
+/*清除img的边框*/
+img {
+    border: 0;
+}
+/*清楚表单元素的边框*/
+input, select, textarea {
+    outline: 0;
+}
+textarea {
+    resize: none;
+    overflow: auto;
+}
+table {
+    border-collapse: collapse;
+    border-spacing: 0;
+}
+th, strong, var, em {
+    font-weight: normal;
+    font-style: normal;
+}
+/*清除浮动*/
+.clearfix:after {
+    content: "";
+    height: 0;
+    line-height: 0;
+    display: block;
+    visibility: hidden;
+    clear: both;
+}
+.clearfix {
+    zoom: 1;
+}
+/*a去掉下划线，以及a:hover*/
+a {
+    text-decoration: none;
+}
+a:hover {
+    color: red;
+}
+/*设置浮动*/
+.fl {
+    float: left;
+}
+.fr {
+    float: right;
+}
+/*CSS初始化 END*/

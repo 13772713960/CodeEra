@@ -1,0 +1,317 @@
+/*将来所有的CSS的样式我们都要放在CSS文件中*/
+/* CSS初始化 START*/
+/*清楚标签的margin和padding*/
+body, h1, h2, h3, h4, h5, h6, hr, p, blockquote, /* structural elements 结构元素 */
+dl, dt, dd, ul, ol, li, /* list elements 列表元素 */
+pre, /* text formatting elements 文本格式元素 */
+fieldset, lengend, button, input, textarea, /* form elements 表单元素 */
+th, td { /* table elements 表格元素 */
+    margin: 0;
+    padding: 0;
+}
+
+/*给页面设置一个统一的字体大小和颜色，还要设置body的背景颜色*/
+body {
+    font-family: "microsoft yahei";
+    font-size: 12px;
+    color: #333;
+}
+
+/*清除li便签之前的小点*/
+ul, ol {
+    list-style: none;
+}
+
+/*清除img的边框*/
+img {
+    border: 0;
+}
+
+/*清楚表单元素的边框*/
+input, select, textarea {
+    outline: 0;
+}
+
+/*清除浮动*/
+.clearfix:after {
+    content: "";
+    height: 0;
+    line-height: 0;
+    display: block;
+    visibility: hidden;
+    clear: both;
+}
+
+.clearfix {
+    zoom: 1;
+}
+
+/*a去掉下划线，以及a:hover*/
+a {
+    color: #333;
+    text-decoration: none;
+}
+
+a:hover {
+    color: red;
+}
+
+/*设置浮动*/
+.fl {
+    float: left;
+}
+
+.fr {
+    float: right;
+}
+
+/*CSS初始化 END*/
+/*版心*/
+.pageCenter{
+    width: 980px;
+}
+/*顶部通栏*/
+.topbar{
+    width: 100%;
+    height: 62px;
+    background: #fff;
+    border-bottom: 1px solid #E1E1E1;
+}
+.topbar .logo{
+    height: 62px;
+    margin: auto;
+}
+.topbar .logo .logol{
+    margin-top: 19px;
+}
+.topbar .logo .logor{
+    width: 196px;
+    height: 28px;
+    border: 1px solid #E1E1E1;
+    border-radius: 5px;
+    margin-top: 20px;
+    background: #F5F5F5;
+}
+.topbar .logo .logor .text{
+    width: 168px;
+    height: 16px;
+    display: block;
+    margin-top: 4px;
+    float: left;
+    border: none;
+    color: #b5b5b5;
+    font-size: 12px;
+    background: #F5F5F5;
+}
+.topbar .logo .logor .button{
+    width: 28px;
+    height: 28px;
+    border-radius: 4px;
+    float: right;
+}
+/*导航栏*/
+.nav {
+    height: 55px;
+    background: url("../images/shanghe_r2_c2.png") repeat;
+}
+.nav .navfont {
+    height: 55px;
+    margin: auto;
+}
+.nav .navfont ul{
+    float: left;
+}
+.nav .navfont ul li {
+    width: 128px;
+    height: 55px;
+    display: inline-block;
+    text-align: center;
+    border-right: 1px solid #D8D8D8;
+}
+.nav .navfont ul li:hover {
+    background: url("../images/shanghe_r2_c6.png");
+}
+.nav .navfont ul li a{
+    font: bolder 16px/55px "黑体";
+    color: black;
+}
+/*轮播图*/
+.playimage {
+    height: 595px;
+    margin: auto;
+    background: url("../images/shanghe_r2_c3.png") no-repeat;
+}
+.playimages {
+    height: 69px;
+    margin: auto;
+    background: url("../images/shanghe_r2_c4.png") no-repeat;
+}
+/*公告*/
+.notice{
+    width: 100%;
+    height: 29px;
+    background: #FBFBFB;
+    border-top: 1px solid #EFEFEF;
+    border-bottom: 1px solid #EFEFEF;
+}
+.notice .notices {
+    height: 29px;
+    line-height: 29px;
+    margin: auto;
+}
+
+.notice .notices h6{
+    padding-right: 28px;
+}
+.notice .notices .share{
+    height: 24px;
+    padding-top: 5px;
+    padding-right: 5px;
+}
+/*新闻中心*/
+.news{
+    height: 226px;
+    margin: auto;
+    margin-top: 15px;
+    margin-bottom: 52px;
+}
+.news li {
+    float: left;
+}
+.news .newproduct{
+    width: 310px;
+    height: 224px;
+    border: 1px solid #E4E4E4;
+    position: relative;
+}
+.news p {
+    height: 14px;
+    font: bolder 12px "";
+    color: #7AB800;
+    padding-top: 11px;
+    float: left;
+}
+.news .newproduct p>img{
+    padding: 2px 7px 0;
+    float: left;
+}
+.news .newproduct .mobile{
+    width: 310px;
+    height: 190px;
+    background: url("../images/shanghe_r2_c9.png");
+    bottom: 0;
+    position: absolute;
+}
+.news .newcenterbox{
+    padding: 0 10px;
+}
+.news .newcenter{
+    width: 373px;
+    height: 224px;
+    border: 1px solid #E4E4E4;
+}
+.news .newcenter p>img{
+    padding: 2px 7px 0;
+    float: left;
+}
+.news .newcenter a{
+    color: #666666;
+    color: #666666;
+    float: right;
+    padding: 11px 11px 0 0;
+    font: bolder 12px "";
+}
+.news .newcenter>ul{
+    width: 333px;
+    height: 170px;
+    margin: auto;
+    margin-top: 25px;
+}
+.news .newcenter>ul li{
+    width: 333px;
+    border-bottom: 1px dashed #b5b5b5;
+}
+.news .newcenter>ul a{
+    font-weight: normal;
+    float: left;
+    line-height: 28px;
+    padding: initial;
+}
+.support {
+    width: 268px;
+    height: 224px;
+    border: 1px solid #E4E4E4;
+}
+.support p>img{
+    padding: 2px 7px 0;
+    float: left;
+}
+.support ul {
+    width: 100px;
+    height: 75px;
+    line-height: 20px;
+    padding-left: 28px;
+    margin-top: 30px;
+
+}
+.support ul>li>img{
+    padding-right: 5px;
+}
+.support .site {
+    font-weight: normal;
+    color: #333;
+    padding-left: 30px;
+    margin-top: 26px;
+}
+/*底部*/
+.footer {
+    width: 100%;
+    height: 306px;
+    background: url("../images/尚合_r2_c4.png");
+}
+.footer .footertop{
+    height: 220px;
+    padding-top: 15px;
+    margin: auto;
+    position: relative;
+}
+.footer .footertop .retruntop{
+    width: 50px;
+    height: 25px;
+    background: url("../images/尚合_r2_c5.png");
+    font-size: 0;
+    position: absolute;
+    top: 0px;
+    right: 10px;
+}
+.footer .footertop>ul>li{
+    float: left;
+    padding: 0 28px;
+}
+.footer .footertop>ul>li>a{
+    color: white;
+}
+.footer .footertop>ul>li>ul{
+    padding-top: 20px;
+    line-height: 20px;
+}
+.footer .footertop>ul>li>ul>li>a{
+    color: #707070;
+}
+.footer>p{
+    text-align: center;
+    width: 980px;
+    color: #000;
+    display: block;
+    margin: auto;
+    margin-bottom: 6px;
+}
+.footer>ul{
+    width: 50px;
+    margin: auto;
+}
+.footer>ul>li{
+    float: left;
+    padding: 2px;
+}
+
